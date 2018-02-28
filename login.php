@@ -23,16 +23,20 @@
 
 // define variables and set to empty values
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $pseudologin = test_input($_POST["pseudologin"]);
+  $pseudo = test_input($_POST["pseudo"]);
   $pass = test_input($_POST["pass"]);
-  $confirm = test_input($_POST["confirm"]);
+ 
 
 }
 
   ?>
      
-        <?php
-$sql = "SELECT * FROM members WHERE pseudologin = '$pseudo'";
+  <?php
+  if ( isset( $_POST[ 'pseudo' ] ) && isset( $_POST[ 'pass' ] ) ) {
+  $pseudo = $_POST[ 'pseudo' ];
+  $pass = $_POST[ 'pass' ];
+
+$sql = "SELECT * FROM members WHERE pseudo = '$pseudo'";
 $resultat = mysqli_query($con, $sql);
 
 if($resultat->num_rows>=1)
@@ -44,7 +48,7 @@ if($resultat->num_rows>=1)
 }
 ?>
  <?php
-if ( isset( $_POST[ 'pseudologin' ] ) ) {
+if ( isset( $_POST[ 'pseudo' ] ) ) {
 // Vérification de la validité des informations
 
     if(password_verify($_POST["pass"],$pass_hache))
@@ -55,7 +59,7 @@ if ( isset( $_POST[ 'pseudologin' ] ) ) {
 
 // $_POST["password"] ---> Is The User`s Input
 // $pass_hache ---> Is The Hashed Password You Have Fetched From DataBase
-}
+}}
 ?>
 
 
@@ -64,10 +68,10 @@ if ( isset( $_POST[ 'pseudologin' ] ) ) {
             <form id='login' action='login.php' method='post'>
             <fieldset>
               <label for='pseudo'>Pseudo*:</label>
-              <input type='text' name='pseudologin' maxlength="50" />
+              <input type='text' name='pseudo' maxlength="50" />
               <label for='pass'>mot de pass</label>
               <input type='password' name='pass' maxlength="50" />
-              <input type='reset' name='Save' value='Effacer' />
+              <input type='reset' name='Reset' value='Effacer' />
               <input type='submit' name='Save' value='Submit' />
               </fieldset>
             </form>
