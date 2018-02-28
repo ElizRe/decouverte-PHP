@@ -1,0 +1,20 @@
+ li a {
+    display: block;
+    width: 60px;
+}
+h1,p ,form, .contents,fieldset,.login {
+    text-align: center;
+}
+.radio {
+    display: inline;
+
+}
+
+ table {
+     display: inline-block;
+ }
+
+fieldset {
+     display: grid;
+     size: 50%;
+ }
