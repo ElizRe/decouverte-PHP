@@ -47,23 +47,24 @@
       if(($resultat->num_rows > 0)){ 
         // Vérification que le mot de passe est correct
         if (password_verify($pass,$row['pass'])){
-          /* echo "login successful"; */
+           echo "login successful";
+// start up your PHP session 
+    session_start();
+    if(isset($_SESSION['views']))
+    $_SESSION['id'] = $row['id']+ 1;
+    $_SESSION['pseudo'] = $row['pseudo']+ 1;
+    $_SESSION['views'] = 1;
+          echo "views = ". $_SESSION['views']; 
           header("Location: index.php");
-          die();
-        } else {
-          echo "Wrong Password"; 
-
+          
+        } else 
+        {
+          echo "Unknown user or Wrong Password"; 
+        die();
         }
       }
     }
-     // start up your PHP session! 
-    session_start();
-    if(isset($_SESSION['views']))
-    $_SESSION['views'] = $_SESSION['views']+ 1;
-    else
-    $_SESSION['views'] = 1;
-
-    echo "views = ". $_SESSION['views']; 
+     
 ?>
 </body>
 </html>
