@@ -13,30 +13,28 @@ include_once 'menu.php';
 include_once('cnxn.php');
 ?>
   <div class="contents">
-  <h1>Blog</h1>
+  <h1>Blog Articles</h1>
 <?php
+    $id = $_GET['id'];
+    $result = mysqli_query($conn,"SELECT * FROM `blog` WHERE id ='$id'");
+    $row = mysqli_fetch_assoc($result);
+    echo'<h2>'.$row['title'].'</h2>';
+    echo'<p>By <span>'.$row['Author'].'</span>Created <span>'.$row['date'].'</span></p>';
+    echo'<img class="blogImg" src="'.$row['image'].'">';
+    echo'<p>'.$row['texte'].'</p>';
+    if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+    {
+        if($_SESSION['pseudo'] == $row['author'])
+        {
+            echo 'success';
+            
 
-$sql="SELECT * FROM `blog` ORDER BY `date` DESC";
-$resultats = mysqli_query($con, $sql);
-
-while($reponse = mysqli_fetch_assoc($resultats)) {
+        }
+    }
     ?>
-
-    <div class="blog-item">
-    <h2><?php echo $reponse['title'] ?></h2>
-    <img src="<?php echo $reponse ['image'];?>" />
-    <p><?php echo $reponse['intro'] ?></p><br/>
-    <p><?php echo $reponse['text'] ?></p><br/>
-    <p><?php echo $reponse['date'] ?></p>
-    </div>
-
-    <?php
-    //echo $reponse['title'];
-}
-
-
-
-?>
+  </div>
+  </body>
+  </html>  
 
 
 
@@ -107,18 +105,5 @@ else {
     </table>
 </form>
   </div>
-  <div class="seeblog">
-            <?php
-                echo '<div class="ticketImg"><img src="'.$row['image'].'"></div>';
-                echo '<div  class="ticketText"><p>'.$row['date'].'</p>';
-                echo '<p>'.$row['titre'].'</p>';
-                echo '<p>'.$row['intro'].'</p>';
-                echo '
-                <form method="get" action="blog_articles.php">
-                <button name="id" value="'.$row['id'].'">see more</button>
-                </form>
-                </div>
-    </div>
-            ?>
 </body>
 </html>

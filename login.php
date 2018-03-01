@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="FR">
 <head>
@@ -26,8 +29,7 @@
   <?php
   include_once('menu.php');
   include_once('cnxn.php');
-  ?>
-  <?php
+
 // define variables and set to empty values
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //   $pseudo = test_input($_POST["pseudo"]);
@@ -48,23 +50,20 @@
         // Vérification que le mot de passe est correct
         if (password_verify($pass,$row['pass'])){
            echo "login successful";
-// start up your PHP session 
-    session_start();
-    if(isset($_SESSION['views']))
-    $_SESSION['id'] = $row['id']+ 1;
-    $_SESSION['pseudo'] = $row['pseudo']+ 1;
-    $_SESSION['views'] = 1;
-          echo "views = ". $_SESSION['views']; 
+          // start up your PHP session 
+          $_SESSION['connected'] = true;
+          $_SESSION['id'] = $row['id'];
+          $_SESSION['pseudo'] = $row['pseudo'];
+          $_SESSION['views'] = 1;
           header("Location: index.php");
-          
-        } else 
-        {
+        } else {
           echo "Unknown user or Wrong Password"; 
-        die();
         }
+      } else {
+        echo "Pseudo doesn't exist.";
       }
     }
      
-?>
+  ?>
 </body>
 </html>

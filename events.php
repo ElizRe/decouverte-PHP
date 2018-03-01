@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="FR">
 <head>
@@ -9,8 +12,12 @@
 </head>
 <body>
   <?php
-include_once 'menu.php';
-include_once('cnxn.php');
-?>
+  // Vérification que nous sommes bien authentifié
+  // Si nous sommes pas authentifié rediriger vers la page de connexion.
+  // ...
+
+  include_once 'menu.php';
+  include_once('cnxn.php');
+  ?>
   <div class="contents">
   <h1>Events</h1>
