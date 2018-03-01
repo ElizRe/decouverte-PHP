@@ -1,36 +1,16 @@
-<?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "simplonco", "countries");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
- 
-// Escape user inputs for security
-$term = mysqli_real_escape_string($link, $_REQUEST['term']);
- 
-if(isset($term)){
-    // Attempt select query execution
-    $sql = "SELECT * FROM countries WHERE name LIKE '" . $term . "%'";
-    if($result = mysqli_query($link, $sql)){
-        if(mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_array($result)){
-                echo "<p>" . $row['name'] . "</p>";
-
-            }
-            // Close result set
-            mysqli_free_result($result);
-        } else{
-            echo "<p>This country is not referenced</p>";
-        }
-    } else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-    }
-}
- 
-// close connection
-mysqli_close($link);
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP EXO</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <?php
+include_once 'menu.php';
+include_once('cnxn.php');
 ?>
-
+  <div class="contents">
+  <h1>Events</h1>

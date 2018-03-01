@@ -9,71 +9,61 @@
 </head>
 
 <body>
+
+          <div class="login">
+            <h2>Log-in</h2>
+            <form id='login' action='login.php' method='post'>
+              <fieldset>
+                <label for='pseudo'>Pseudo:</label>
+                <input type='text' name='pseudo' maxlength="50" />
+                <label for='pass'>mot de pass</label>
+                <input type='password' name='pass' maxlength="50" />
+                <input type='reset' name='Reset' value='Effacer' />
+                <input type='submit' name='Save' value='Submit' />
+              </fieldset>
+            </form>
+          </div>
   <?php
   include_once('menu.php');
   include_once('cnxn.php');
   ?>
   <?php
-  function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
 // define variables and set to empty values
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $pseudo = test_input($_POST["pseudo"]);
-  $pass = test_input($_POST["pass"]);
- 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   $pseudo = test_input($_POST["pseudo"]);
+//   $pass = test_input($_POST["pass"]);
+// }
+    // Vérifier que le pseudo et password ont été renseigné par l'utilisateur
+    if ( isset( $_POST[ 'pseudo' ] ) && isset( $_POST[ 'pass' ] ) ) {
+      $pseudo = $_POST[ 'pseudo' ];
+      $pass = $_POST[ 'pass' ];
+      
+      // Récupération de l'utilisateur correspondant au pseudo
+      $sql = "SELECT * FROM members WHERE pseudo = '$pseudo'";
+      $resultat = mysqli_query($con, $sql);
+      $row = mysqli_fetch_array($resultat);
 
-}
+      // Vérification que le pseudo existe en base
+      if(($resultat->num_rows > 0)){ 
+        // Vérification que le mot de passe est correct
+        if (password_verify($pass,$row['pass'])){
+          /* echo "login successful"; */
+          header("Location: index.php");
+          die();
+        } else {
+          echo "Wrong Password"; 
 
-  ?>
-     
-  <?php
-  if ( isset( $_POST[ 'pseudo' ] ) && isset( $_POST[ 'pass' ] ) ) {
-  $pseudo = $_POST[ 'pseudo' ];
-  $pass = $_POST[ 'pass' ];
-
-$sql = "SELECT * FROM members WHERE pseudo = '$pseudo'";
-$resultat = mysqli_query($con, $sql);
-
-if($resultat->num_rows>=1)
-{
-  die ("pseudo already exists");
-} else {
-
-  
-}
-?>
- <?php
-if ( isset( $_POST[ 'pseudo' ] ) ) {
-// Vérification de la validité des informations
-
-    if(password_verify($_POST["pass"],$pass_hache))
-    echo "Welcome";
-
+        }
+      }
+    }
+     // start up your PHP session! 
+    session_start();
+    if(isset($_SESSION['views']))
+    $_SESSION['views'] = $_SESSION['views']+ 1;
     else
-    echo "Wrong Password";
+    $_SESSION['views'] = 1;
 
-// $_POST["password"] ---> Is The User`s Input
-// $pass_hache ---> Is The Hashed Password You Have Fetched From DataBase
-}}
+    echo "views = ". $_SESSION['views']; 
 ?>
-
-
-          <div class="login">
-            <h2>Log-in</h2>
-            <form id='login' action='login.php' method='post'>
-            <fieldset>
-              <label for='pseudo'>Pseudo*:</label>
-              <input type='text' name='pseudo' maxlength="50" />
-              <label for='pass'>mot de pass</label>
-              <input type='password' name='pass' maxlength="50" />
-              <input type='reset' name='Reset' value='Effacer' />
-              <input type='submit' name='Save' value='Submit' />
-              </fieldset>
-            </form>
 </body>
 </html>

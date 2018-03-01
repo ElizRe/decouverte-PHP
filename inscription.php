@@ -90,9 +90,9 @@ if ( isset( $_POST[ 'pseudologin' ] ) ) {
             <form id='signup' action='inscription.php' method='post'>
               <fieldset>
                 <legend>Signup</legend>
-                <label for='pseudo'>Pseudo*:</label>
+                <label for='pseudo'>Pseudo:</label>
                 <input type='text' name='pseudo' maxlength="50" required />
-                <label for='pass'>mot de pass 1*:</label>
+                <label for='pass'>mot de pass 1:</label>
                 <input type='password' name='pass' maxlength="50" />
                 <label for='pass'>mot de pass 2*:</label>
                 <input type='password' name='confirm' maxlength="50" />
