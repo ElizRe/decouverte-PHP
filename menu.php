@@ -3,13 +3,12 @@
     <li><a href="about.php">A propos</a></li>
     <li><a href="events.php">Evenement</a></li>
     <li><a href="blog.php">Blog</a></li>
-    <li><a href="login.php">Login</a></li>
     <li><a href="contact.php">Contact</a></li>
     <li><a href="inscription.php">Inscription</a></li>
     <?php
         if(!isset($_SESSION['pseudo']))
         {
-            echo '<li><a  href="/login.php">Sign-in</a></li>';
+            echo '<li><a  href="/login.php">Login</a></li>';
         }
         if(isset($_SESSION['pseudo']))
         {

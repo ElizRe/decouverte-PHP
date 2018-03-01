@@ -8,17 +8,16 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <?php
+<h1>Blog</h1>
+<?php
 include_once 'menu.php';
 include_once('cnxn.php');
 ?>
-  <div class="contents">
-  <h1>Blog</h1>
 <?php
 
 $sql="SELECT * FROM `blog` ORDER BY `date` DESC";
 $resultats = mysqli_query($con, $sql);
-
+$row = mysqli_fetch_assoc($resultats);
 while($reponse = mysqli_fetch_assoc($resultats)) {
     ?>
 
@@ -34,28 +33,12 @@ while($reponse = mysqli_fetch_assoc($resultats)) {
     //echo $reponse['title'];
 }
 
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
 // define variables and set to empty values
 $title  = $intro = $text = $date = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $title = test_input($_POST["title"]);
+  $image = test_input($_POST)["image"]);
   $intro = test_input($_POST["intro"]);
   $text = test_input($_POST["text"]);
   $date = test_input($_POST["date"]);
@@ -67,12 +50,10 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-?>
- <?php
 
 $sql="INSERT INTO blog (title, intro, image, text, date)
 VALUES
-('$title','$intro','','$text','$date')";
+('$title','$intro','$image','$text','$date')";
 echo $sql;
 
 $resultat = mysqli_query($con, $sql);
@@ -85,7 +66,9 @@ else {
 }
 
 ?>
- <form action="blog.php" method="post">
+<div class="contents">
+  
+  <form action="blog.php" method="post">
     <table>
         <tr>
             <td><label for="title">Title</label></td>
@@ -95,6 +78,8 @@ else {
         <img src="image/cat.jpeg" alt="cat" img name="image" style="height:100px;"></img>
         <td><label for="intro">intro</label></td>
             <td><input name="intro" id="intro"/></td>
+            <td><label for="image">intro</label></td>
+            <td><input name="image" id="intro"/></td>
             <td><label for="text">Text</label></td>
             <td><textarea name="text" id="text"></textarea></td>
             <td><label for="date">date</label></td>
@@ -107,18 +92,20 @@ else {
     </table>
 </form>
   </div>
-  <div class="seeblog">
-            <?php
+
+<div class="seeblog">
+<?php
                 echo '<div class="ticketImg"><img src="'.$row['image'].'"></div>';
                 echo '<div  class="ticketText"><p>'.$row['date'].'</p>';
-                echo '<p>'.$row['titre'].'</p>';
+                echo '<p>'.$row['title'].'</p>';
                 echo '<p>'.$row['intro'].'</p>';
                 echo '
                 <form method="get" action="blog_articles.php">
-                <button name="id" value="'.$row['id'].'">see more</button>
+                <button name="id" value="'.$row['id'].'">See more</button>
                 </form>
-                </div>
-    </div>
-            ?>
+                    </div>
+                </div>';
+?>
+ 
 </body>
 </html>
