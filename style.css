@@ -1,20 +1,60 @@
- li a {
-    display: block;
-    width: 60px;
+body {
+    background-color: rgb(53, 1, 53);
+    color: white;
 }
-h1,p ,form, .contents,fieldset,.login {
+
+li {
+    display: inline;
+    color: white;
+}
+
+a {
+    display: inline;
+    padding: 8px;
+    color: white;
+    background-color: rgb(53, 1, 53);
+}
+
+form {
+    display: inline-grid;
+}
+
+h1,
+h2,
+p,
+form,
+.contents,
+fieldset,
+.login {
     text-align: center;
+    color: white;
 }
+
+img {
+    display: inline;
+    padding-left: 575px;
+}
+
+.blog-item {
+    display: inline-block;
+}
+
 .radio {
     display: inline;
-
 }
 
- table {
-     display: inline-block;
- }
+table {
+    display: inline-block;
+}
 
 fieldset {
-     display: grid;
-     size: 50%;
- }
+    display: grid;
+    size: 50%;
+}
+
+form input[type="submit"] {
+    border: 1px solid #FFFFFF;
+    font-size: 16px;
+    padding: 5px;
+    width: 300px;
+}

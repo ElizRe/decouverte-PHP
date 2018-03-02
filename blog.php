@@ -10,16 +10,15 @@
 <body>
 <h1>Blog</h1>
 <?php
-include_once 'menu.php';
-include_once('cnxn.php');
-?>
-<?php
+    include_once 'menu.php';
+    include_once('cnxn.php');
 
-$sql="SELECT * FROM `blog` ORDER BY `date` DESC";
-$resultats = mysqli_query($con, $sql);
-$row = mysqli_fetch_assoc($resultats);
-while($reponse = mysqli_fetch_assoc($resultats)) {
-    ?>
+
+    $sql="SELECT * FROM `blog` ORDER BY `date` DESC";
+    $resultats = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($resultats);
+    while($reponse = mysqli_fetch_assoc($resultats)) {
+?>
 
     <div class="blog-item">
     <h2><?php echo $reponse['title'] ?></h2>
@@ -29,41 +28,40 @@ while($reponse = mysqli_fetch_assoc($resultats)) {
     <p><?php echo $reponse['date'] ?></p>
     </div>
 
-    <?php
-    //echo $reponse['title'];
-}
-
-// define variables and set to empty values
-$title  = $intro = $text = $date = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $title = test_input($_POST["title"]);
-  $image = test_input($_POST)["image"]);
-  $intro = test_input($_POST["intro"]);
-  $text = test_input($_POST["text"]);
-  $date = test_input($_POST["date"]);
+<?php
 
 }
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 
-$sql="INSERT INTO blog (title, intro, image, text, date)
-VALUES
-('$title','$intro','$image','$text','$date')";
-echo $sql;
+    // define variables and set to empty values
+    $title  = $image = $intro = $text = $date = "";
 
-$resultat = mysqli_query($con, $sql);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $title = test_input($_POST["title"]);
+        $image = test_input($_POST["image"]);
+        $intro = test_input($_POST["intro"]);
+        $text = test_input($_POST["text"]);
+        $date = test_input($_POST["date"]);
 
-if($resultat) {
-    echo "record added";
-}
-else {
-    echo "Not added";
-}
+    }
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    $sql="INSERT INTO blog (title, intro, image, text, date)
+    VALUES
+    ('$title','$intro','$image','$text','$date')";
+
+    $resultat = mysqli_query($con, $sql);
+
+    if($resultat) {
+        echo "record added";
+    }
+    else {
+        echo "Not added";
+    }
 
 ?>
 <div class="contents">
@@ -78,8 +76,8 @@ else {
         <img src="image/cat.jpeg" alt="cat" img name="image" style="height:100px;"></img>
         <td><label for="intro">intro</label></td>
             <td><input name="intro" id="intro"/></td>
-            <td><label for="image">intro</label></td>
-            <td><input name="image" id="intro"/></td>
+            <td><label for="image">image</label></td>
+            <td><input name="image" id="image"/></td>
             <td><label for="text">Text</label></td>
             <td><textarea name="text" id="text"></textarea></td>
             <td><label for="date">date</label></td>
@@ -91,20 +89,25 @@ else {
         </tr>
     </table>
 </form>
+<form method="post" enctype="multipart/form-data">
+Image name:<input type="file" name="imgfile"><br>
+<input type="submit" name="submit2" value="upload">
+</form>
   </div>
 
 <div class="seeblog">
 <?php
-                echo '<div class="ticketImg"><img src="'.$row['image'].'"></div>';
-                echo '<div  class="ticketText"><p>'.$row['date'].'</p>';
+                echo '<img src="'.$row['image'].'">';
+                echo '<p>'.$row['date'].'</p>';
                 echo '<p>'.$row['title'].'</p>';
                 echo '<p>'.$row['intro'].'</p>';
-                echo '
+               // echo "<a href=$url>$site_title</a>"?>
+
                 <form method="get" action="blog_articles.php">
                 <button name="id" value="'.$row['id'].'">See more</button>
                 </form>
                     </div>
-                </div>';
+                </div>
 ?>
  
 </body>

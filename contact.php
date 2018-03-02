@@ -87,7 +87,5 @@ Age: <input type="number" name="age"><br>
   <input type="submit" value="Ok">
 </form>
   </div>
-</ul>
-
 </body>
 </html>

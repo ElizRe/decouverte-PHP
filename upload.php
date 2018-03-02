@@ -11,7 +11,7 @@ if(isset($_REQUEST['submit']))
     else
     {
       move_uploaded_file($_FILES["imgfile"]["tmp_name"],"uploads/$filename");
-      echo "Upload Successful . <a href='uploads/$filename'>Click here</a> to view the uploaded image";
+      echo "Upload Successful . <a href='uploads/$imagename'>Click here</a> to view the uploaded image";
     }
   }
   else
@@ -22,10 +22,3 @@ if(isset($_REQUEST['submit']))
 else
 {
 ?>
-<form method="post" enctype="multipart/form-data">
-File name:<input type="file" name="imgfile"><br>
-<input type="submit" name="submit" value="upload">
-</form>
-<?php
-}
-?> 

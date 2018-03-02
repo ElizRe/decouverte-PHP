@@ -47,8 +47,8 @@ $resultats = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($resultats);
 ?>
 <?php
-        echo '<div class="ticketImg"><img src="'.$row['image'].'" </div>';
-        echo '<div  class="ticketText"><p>Created the '.$row['createdate'].'</p>';
+        echo '<img src="'.$row['image'].'" </img>';
+        echo '<p>Created the '.$row['createdate'].'</p>';
         echo '<p>'.$row['title'].'</p>';
         echo '<p>'.$row['image'].'</p>';
         echo '<p>'.$row['intro'].'</p>';

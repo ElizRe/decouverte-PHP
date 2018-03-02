@@ -1,4 +1,4 @@
- <ul>
+ <ul class="menu">
     <li><a href="index.php">Home</a></li>
     <li><a href="about.php">A propos</a></li>
     <li><a href="events.php">Evenement</a></li>
