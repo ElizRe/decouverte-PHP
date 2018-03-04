@@ -24,7 +24,6 @@
     <h2><?php echo $reponse['title'] ?></h2>
     <img src="<?php echo $reponse ['image'];?>" />
     <p><?php echo $reponse['intro'] ?></p><br/>
-    <p><?php echo $reponse['text'] ?></p><br/>
     <p><?php echo $reponse['date'] ?></p>
     </div>
 
@@ -32,7 +31,7 @@
 
 }
 
-    // define variables and set to empty values
+    // define variables and set to empty values and protect against injection
     $title  = $image = $intro = $text = $date = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

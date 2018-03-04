@@ -17,7 +17,7 @@
   <h1>Blog Article</h1>
 <?php
 
-// define variables and set to empty values
+// define variables and set to empty values and protect against injection
 $id = $title  = $image = $intro = $text = $date = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,16 +35,21 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+if (isset ($_POST['blog_articles.php'])) {
     $id = $_GET['id'];
-    $sql="SELECT * FROM `blog` WHERE id ='$id'";
+    var_dump($id);
+    $sql ="SELECT * FROM `blog` WHERE _id = '.$id.'";
     $resultats = mysqli_query($con, $sql);
-    $row = mysqli_fetch_assoc($resultats);
+    while ($row = mysqli_fetch_array($resultats)){
     var_dump($resultats);
-    echo'<h2>'.$row['title'].'</h2>';
-    echo'<p>'.$row['intro'].'</p>';
-    echo'<p></span>Created <span>'.$row['date'].'</span></p>';
-    echo'<img name="myimage" src="'.$row['image'].'" width="60" height="60"/>';
-    echo'<p>'.$row['text'].'</p>';
+    echo'<h2>'. $row['_title'].'</h2>';
+    echo'<p>'. $row['_intro'].'</p>';
+    echo'<p></span>Created <span>'. $row['_date'].'</span></p>';
+    echo'<img name="myimage" src="'. $row['_image'].'" width="60" height="60"/>';
+    echo'<p>'. $row['text'].'</p>';
+    }
+    }
+    
 ?>
   </div>
 </body>

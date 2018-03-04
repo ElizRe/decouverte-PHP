@@ -20,7 +20,7 @@ ini_set('display_errors', 1);
   include_once('cnxn.php');
   ?>
   <?php
-// define variables and set to empty values
+// define variables and set to empty values and protect against injection
 $objet = $message = $thematique = $useracct = $age = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

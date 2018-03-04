@@ -14,8 +14,8 @@
 </head>
 <body>
   <div class="contents">
-  <h1>This is the title of my page</h1>
-  <p>This is text</p>
+  <h1>Welcome to my Blog</h1>
+  <p>This is a PHP Blog</p>
   </div>   
 </body>
 </html>

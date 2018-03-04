@@ -17,7 +17,7 @@
    include_once('cnxn.php');
   ?>
   <?php
-// define variables and set to empty values
+// define variables and set to empty values and protect against injection
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $pseudo = test_input($_POST["pseudo"]);
   $pass = test_input($_POST["pass"]);
