@@ -63,5 +63,8 @@ function test_input($data) {
   }
 
 ?>
+<!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+            
 </body>
 </html>

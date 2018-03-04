@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP EXO</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -35,7 +37,7 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-if (isset ($_POST['blog_articles.php'])) {
+if (isset ($_POST['blogarticles.php'])) {
     $id = $_GET['id'];
     var_dump($id);
     $sql ="SELECT * FROM `blog` WHERE _id = '.$id.'";
@@ -52,5 +54,8 @@ if (isset ($_POST['blog_articles.php'])) {
     
 ?>
   </div>
+  <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+            
 </body>
 </html>

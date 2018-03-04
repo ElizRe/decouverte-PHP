@@ -1,5 +1,7 @@
 <?php
   session_start();
+  include_once('menu.php');
+  include_once('cnxn.php');
 ?>
 <!DOCTYPE html>
 <html lang="FR">
@@ -27,9 +29,6 @@
             </form>
           </div>
   <?php
-  include_once('menu.php');
-  include_once('cnxn.php');
-
 // define variables and set to empty values
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //   $pseudo = test_input($_POST["pseudo"]);

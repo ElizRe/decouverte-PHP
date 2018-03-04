@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP EXO</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -71,6 +73,11 @@ mysqli_query($con, $sql);
 echo "record added";
 
 ?>
+<div class="container">
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
   <form action="contact.php" method="post">
 Objet: <input type="text" name="objet" required ><br>
 Message: <textarea name="message" required rows="5" cols="40"></textarea><br>
@@ -80,12 +87,17 @@ Thématique <select name="thematique">
   </select>
   <br>
   <p>Do you have a user account?</p>
-<input type="radio" class="radio" name="useracct" value="oui" checked> Oui<br>
-  <input type="radio" class="radio" name="useracct" value="non"> Non<br>
+<input class="with-gap"type="radio" class="radio" name="useracct" value="oui">Oui<br>
+  <input class="with-gap" type="radio" class="radio" name="useracct" value="non">Non<br>
 Age: <input type="number" name="age"><br>
 <input type="reset" value="Effacer">
   <input type="submit" value="Ok">
 </form>
   </div>
+  </div>
+  </div>
+  <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+            
 </body>
 </html>

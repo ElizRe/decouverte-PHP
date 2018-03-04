@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP EXO</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -14,41 +16,31 @@
     include_once('cnxn.php');
 
 
-    $sql="SELECT * FROM `blog` ORDER BY `date` DESC";
+    $sql="SELECT * FROM `blog` ORDER BY `date` DESC LIMIT 5";
     $resultats = mysqli_query($con, $sql);
     $row = mysqli_fetch_assoc($resultats);
     while($reponse = mysqli_fetch_assoc($resultats)) {
 ?>
 
-    <div class="blog-item">
+    <div class="card-large">
     <h2><?php echo $reponse['title'] ?></h2>
     <img src="<?php echo $reponse ['image'];?>" />
     <p><?php echo $reponse['intro'] ?></p><br/>
     <p><?php echo $reponse['date'] ?></p>
+    <form method="get" action="blogarticles.php">
+    <button name="id" value="'.$row['id'].'">See full blog article</button>
+    </form>
     </div>
 
 <?php
 
 }
 
-    // define variables and set to empty values and protect against injection
+// define variables and set to empty values and protect against injection
     $title  = $image = $intro = $text = $date = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $title = test_input($_POST["title"]);
-        $image = test_input($_POST["image"]);
-        $intro = test_input($_POST["intro"]);
-        $text = test_input($_POST["text"]);
-        $date = test_input($_POST["date"]);
-
-    }
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
+?>
+ <?php
     $sql="INSERT INTO blog (title, intro, image, text, date)
     VALUES
     ('$title','$intro','$image','$text','$date')";
@@ -64,7 +56,7 @@
 
 ?>
 <div class="contents">
-  
+  <h3>Add your Blog article here:</h3>
   <form action="blog.php" method="post">
     <table>
         <tr>
@@ -72,7 +64,6 @@
             <td><input name="title" id="title" /></td>
         </tr>
         <tr>
-        <img src="image/cat.jpeg" alt="cat" img name="image" style="height:100px;"></img>
         <td><label for="intro">intro</label></td>
             <td><input name="intro" id="intro"/></td>
             <td><label for="image">image</label></td>
@@ -88,26 +79,9 @@
         </tr>
     </table>
 </form>
-<form method="post" enctype="multipart/form-data">
-Image name:<input type="file" name="imgfile"><br>
-<input type="submit" name="submit2" value="upload">
-</form>
   </div>
-
-<div class="seeblog">
-<?php
-                echo '<img src="'.$row['image'].'">';
-                echo '<p>'.$row['date'].'</p>';
-                echo '<p>'.$row['title'].'</p>';
-                echo '<p>'.$row['intro'].'</p>';
-               // echo "<a href=$url>$site_title</a>"?>
-
-                <form method="get" action="blog_articles.php">
-                <button name="id" value="'.$row['id'].'">See more</button>
-                </form>
-                    </div>
-                </div>
-?>
- 
+  <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+            
 </body>
 </html>
