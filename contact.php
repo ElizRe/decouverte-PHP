@@ -43,7 +43,7 @@ function test_input($data) {
   return $data;
 }
 ?>
-  <div class="contents">
+  <div class="container">
   <h1>Contact</h1>
   <?php
 
@@ -69,32 +69,35 @@ VALUES
 ('$objet', '$message','$thematique','$useracct','$age')";
 
 mysqli_query($con, $sql);
-
-echo "record added";
-
 ?>
 <div class="container">
-<div class="row">
+  <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-  <form action="contact.php" method="post">
-Objet: <input type="text" name="objet" required ><br>
-Message: <textarea name="message" required rows="5" cols="40"></textarea><br>
-Thématique <select name="thematique">
-    <option value="question">Question</option>
-    <option value="information">Information</option>
-  </select>
-  <br>
-  <p>Do you have a user account?</p>
-<input class="with-gap"type="radio" class="radio" name="useracct" value="oui">Oui<br>
-  <input class="with-gap" type="radio" class="radio" name="useracct" value="non">Non<br>
-Age: <input type="number" name="age"><br>
-<input type="reset" value="Effacer">
-  <input type="submit" value="Ok">
-</form>
-  </div>
-  </div>
+          
+          <form action="contact.php" method="post">
+            <fieldset>
+            Objet:
+            <input type="text" name="objet" required><br>
+            Message:
+            <textarea name="message" required rows="50" cols="40"></textarea><br>
+            Thématique
+            <select name="thematique">
+              <option value="question">Question</option>
+              <option value="information">Information</option>
+            </select><br>
+            <p>Do you have a user account?</p>
+            <input class="with-gap" type="radio" class="radio" name="useracct" value="oui">Oui
+            <input class="with-gap" type="radio" class="radio" name="useracct" value="non">Non<br> 
+            Age:
+            <input type="number" name="age"><br>
+            <input type="reset" value="Effacer">
+            <input type="submit" value="Ok">
+            </fieldset>
+          </form>          
+        </div>
+      </div>
   </div>
   <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>

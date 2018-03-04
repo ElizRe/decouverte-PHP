@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="contents">
-  <h1>Blog Article</h1>
+  <div class="container">
+    <h1>Blog Article</h1>
 <?php
 
 // define variables and set to empty values and protect against injection
@@ -47,7 +47,7 @@ if (isset ($_POST['blogarticles.php'])) {
     echo'<h2>'. $row['_title'].'</h2>';
     echo'<p>'. $row['_intro'].'</p>';
     echo'<p></span>Created <span>'. $row['_date'].'</span></p>';
-    echo'<img name="myimage" src="'. $row['_image'].'" width="60" height="60"/>';
+    echo'<img name="myimage" class="center" src="'. $row['_image'].'" width="60" height="60"/>';
     echo'<p>'. $row['text'].'</p>';
     }
     }

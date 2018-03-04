@@ -15,19 +15,19 @@
 
 <body>
 
-          <div class="login">
-            <h2>Log-in</h2>
-            <form id='login' action='login.php' method='post'>
-              <fieldset>
-                <label for='pseudo'>Pseudo:</label>
-                <input type='text' name='pseudo' maxlength="50" />
-                <label for='pass'>mot de pass</label>
-                <input type='password' name='pass' maxlength="50" />
-                <input type='reset' name='Reset' value='Effacer' />
-                <input type='submit' name='Save' value='Submit' />
-              </fieldset>
-            </form>
-          </div>
+<div class="container">
+  <h2>Log-in</h2>
+  <form id='login' action='login.php' method='post'>
+    <fieldset>
+      <label for='pseudo'>Pseudo:</label>
+      <input type='text' name='pseudo' maxlength="50" />
+      <label for='pass'>mot de pass</label>
+      <input type='password' name='pass' maxlength="50" />
+      <input type='reset' name='Reset' value='Effacer' />
+      <input type='submit' name='Save' value='Submit' />
+    </fieldset>
+  </form>
+</div>
   <?php
 // define variables and set to empty values
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {

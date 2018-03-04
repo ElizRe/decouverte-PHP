@@ -17,8 +17,7 @@
   <?php
     include_once('menu.php');
     include_once('cnxn.php');
-  ?>
-  <?php
+
 // define variables and set to empty values and protect against injection
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $pseudo = test_input($_POST["pseudo"]);
@@ -85,30 +84,22 @@ if ( isset( $_POST[ 'pseudologin' ] ) ) {
 }
 ?>
 
-
-
-<div class="container"></div>
-          <div class="contents">
-            <h1> Inscription</h1>
-          </div>
-          <div class="signup">
-            <form id='signup' action='inscription.php' method='post'>
-              <fieldset>
-                <legend>Signup</legend>
-                <label for='pseudo'>Pseudo:</label>
-                <input type='text' name='pseudo' maxlength="50" required />
-                <label for='pass'>mot de pass 1:</label>
-                <input type='password' name='pass' maxlength="50" />
-                <label for='pass'>mot de pass 2*:</label>
-                <input type='password' name='confirm' maxlength="50" />
-                <input type='reset' name='Save' value='Effacer' />
-                <input type='submit' name='Save' value='Submit' />
-              </fieldset>
-            </form>
-          </div>
-          </div>
+<div class="container">
+  <h1> Inscription</h1>
+  <form action='inscription.php' method='post'>
+    <legend>SIGN-UP</legend>
+    <label for='pseudo'>Choose your Pseudo:</label>
+    <input type='text' name='pseudo' maxlength="50" required />
+    <label for='pass'>Type your password:</label>
+    <input type='password' name='pass' maxlength="50" />
+    <label for='pass2'>Re-type your password:</label>
+    <input type='password' name='confirm' maxlength="50" />
+    <input type='reset' name='Save' value='Effacer' />
+    <input type='submit' name='Save' value='Submit' />
+  </form>
+</div>
           <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
             
 </body>
 </html>

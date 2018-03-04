@@ -1,14 +1,3 @@
-<?php
-include_once 'menu.php';
-include_once('cnxn.php');
-
-session_start();
-// Vérification que nous sommes bien authentifié
-// Si nous sommes pas authentifié rediriger vers la page de connexion.
-if( !isset($_SESSION['pseudo'])) {
-  header ('Location: login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="FR">
 <head>
@@ -19,6 +8,18 @@ if( !isset($_SESSION['pseudo'])) {
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+  <?php
+include_once 'menu.php';
+include_once('cnxn.php');
+
+session_start();
+// Vérification que nous sommes bien authentifié
+// Si nous sommes pas authentifié rediriger vers la page de connexion.
+if( !isset($_SESSION['pseudo'])) {
+  header ('Location: login.php');
+}
+?>
 <h1>Events</h1>
 <?php
   // define variables and set to empty values and protect against injection
@@ -49,16 +50,17 @@ function test_input($data) {
   $row = mysqli_fetch_assoc($resultats);
   while($reponse = mysqli_fetch_assoc($resultats)) {
 ?>
-    <div class="event">
-    <h2><?php echo $reponse['title'] ?></h2><br/>
-     <img src="<?php echo $reponse ['image'];?>" />
-    <p><?php echo $reponse['intro'] ?></p><br/>
-    <p><?php echo $reponse['description'] ?></p><br/>
-    <p>From:<?php echo $reponse['startdate'] ?></p><br/>
-    <p>To:<?php echo $reponse['enddate'] ?></p><br/>
-    <p>Where:<?php echo $reponse['location'] ?></p><br/>
-    <p>Date added:<?php echo $reponse['createdate'] ?></p>
-    </div>
+    
+  <div class="container">
+              <h2><?php echo $reponse['title'] ?></h2><br/>
+              <img class="center" src="<?php echo $reponse ['image'];?>" />
+              <p><?php echo $reponse['intro'] ?></p><br/>
+              <p><?php echo $reponse['description'] ?></p><br/>
+              <p>From:<?php echo $reponse['startdate'] ?></p><br/>
+              <p>To:<?php echo $reponse['enddate'] ?></p><br/>
+              <p>Where:<?php echo $reponse['location'] ?></p><br/>
+              <p>Date added:<?php echo $reponse['createdate'] ?></p>
+  </div>
 <?php
   }
 

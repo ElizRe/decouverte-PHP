@@ -16,8 +16,8 @@
 </head>
 <body>
   <div class="contents">
-  <h1>Welcome to my Blog</h1>
-  <p>This is a PHP Blog</p>
+    <h1>Welcome to my Blog</h1>
+    <p>This is a PHP Blog</p>
   </div> 
   <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>

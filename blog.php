@@ -10,26 +10,24 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Blog</h1>
 <?php
-    include_once 'menu.php';
+    include_once('menu.php');
     include_once('cnxn.php');
-
-
+    
     $sql="SELECT * FROM `blog` ORDER BY `date` DESC LIMIT 5";
     $resultats = mysqli_query($con, $sql);
     $row = mysqli_fetch_assoc($resultats);
     while($reponse = mysqli_fetch_assoc($resultats)) {
 ?>
-
+<h1>Blog</h1>
     <div class="card-large">
-    <h2><?php echo $reponse['title'] ?></h2>
-    <img src="<?php echo $reponse ['image'];?>" />
-    <p><?php echo $reponse['intro'] ?></p><br/>
-    <p><?php echo $reponse['date'] ?></p>
-    <form method="get" action="blogarticles.php">
-    <button name="id" value="'.$row['id'].'">See full blog article</button>
-    </form>
+        <h2><?php echo $reponse['title'] ?></h2>
+        <img class="center" src="<?php echo $reponse ['image'];?>" />
+        <p><?php echo $reponse['intro'] ?></p><br/>
+        <p><?php echo $reponse['date'] ?></p>
+        <form method="get" action="blogarticles.php">
+        <button name="id" value="'.$row['id'].'">See full blog article</button>
+        </form>
     </div>
 
 <?php
