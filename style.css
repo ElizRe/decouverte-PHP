@@ -3,18 +3,15 @@ body {
     color: white;
 }
 
-.container {
+.container,
+table,
+.card-large {
     margin: 0 auto;
     width: 80em;
     text-align: center;
 }
 
-li {
-    display: inline;
-    color: white;
-}
-
-a {
+a,li {
     display: inline;
     padding: 8px;
     color: white;
@@ -45,20 +42,15 @@ img.center {
     margin-right: auto;
 }
 
-.blog-item {
-    display: inline-block;
-}
-
 .radio {
     display: inline;
 }
 
 table,
-.card-large .container .card-large {
+.card-large
+.container,
+.blog-item {
     display: inline-block;
-    margin: 0 auto ! important;
-    width: 80em !important;
-    text-align: center !important;
 }
 
 fieldset {
